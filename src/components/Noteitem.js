@@ -17,4 +17,4 @@ const Noteitem = (props) => {
   );
 };
 
-export default Noteitem;
+export default Noteitem
