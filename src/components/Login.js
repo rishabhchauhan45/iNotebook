@@ -38,34 +38,38 @@ const Login = () => {
     }
 
     return (
-        <div className='container mt-2'>
-            <h2 className='my-3'>Login to continue to iNotebook</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                    <label htmlFor="email" className="form-label">Email address</label>
-                    <input 
-                        type="email" 
-                        className="form-control" 
-                        value={credentials.email} 
-                        onChange={onChange} 
-                        id="email" 
-                        name="email" 
-                        aria-describedby="emailHelp" 
-                    />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="password" className="form-label">Password</label>
-                    <input 
-                        type="password" 
-                        className="form-control" 
-                        value={credentials.password} 
-                        onChange={onChange} 
-                        id="password" 
-                        name="password" 
-                    />
-                </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
+        <div className='auth-container'>
+            <div className='premium-card p-4'>
+                <h2 className='mb-4 text-center'>Login to iNotebook</h2>
+                <form onSubmit={handleSubmit}>
+                    <div className="mb-3">
+                        <label htmlFor="email" className="form-label fw-bold">Email address</label>
+                        <input 
+                            type="email" 
+                            className="form-control" 
+                            value={credentials.email} 
+                            onChange={onChange} 
+                            id="email" 
+                            name="email" 
+                            aria-describedby="emailHelp" 
+                            placeholder="Enter your email"
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label htmlFor="password" className="form-label fw-bold">Password</label>
+                        <input 
+                            type="password" 
+                            className="form-control" 
+                            value={credentials.password} 
+                            onChange={onChange} 
+                            id="password" 
+                            name="password" 
+                            placeholder="Enter your password"
+                        />
+                    </div>
+                    <button type="submit" className="btn-gradient px-4 py-2 w-100">Login</button>
+                </form>
+            </div>
         </div>
     )
 }

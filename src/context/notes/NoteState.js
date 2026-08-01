@@ -83,8 +83,10 @@ const NoteState = (props) => {
     setNotes(newNotes);
   }
 
+  const [searchQuery, setSearchQuery] = useState("")
+
   return (
-    <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote, getNotes }}>
+    <NoteContext.Provider value={{ notes, addNote, deleteNote, editNote, getNotes, searchQuery, setSearchQuery }}>
       {props.children}
     </NoteContext.Provider>
   )

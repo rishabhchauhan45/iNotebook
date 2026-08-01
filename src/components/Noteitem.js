@@ -8,10 +8,10 @@ const Noteitem = (props) => {
     const { note, updateNote } = props; 
 
     return (
-        <div className="col-md-3">
-            <div className="card my-3">
+        <div className="col-md-4">
+            <div className="card my-3 premium-card">
                 <div className="card-body">
-                    <div className="d-flex align-items-center">
+                    <div className="d-flex align-items-center mb-2">
                         <h5 className="card-title">{note.title}</h5>
                         
                         {/* Delete Icon: Deletes the note */}

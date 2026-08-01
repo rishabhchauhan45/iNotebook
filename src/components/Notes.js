@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Notes = () => {
     const context = useContext(noteContext);
-    const { notes, getNotes, editNote } = context;
+    const { notes, getNotes, editNote, searchQuery } = context || {};
     let navigate = useNavigate();
 
     // Fetch all notes when the component loads
@@ -39,6 +39,12 @@ const Notes = () => {
     const onChange = (e) => {
         setNote({ ...note, [e.target.name]: e.target.value })
     }
+
+    // Filter notes based on searchQuery
+    const query = searchQuery ? searchQuery.toLowerCase() : "";
+    const filteredNotes = Array.isArray(notes) 
+        ? notes.filter(note => note.title.toLowerCase().includes(query) || note.description.toLowerCase().includes(query)) 
+        : [];
 
     return (
         <>
@@ -75,7 +81,7 @@ const Notes = () => {
                         </div>
                         <div className="modal-footer">
                             <button ref={refClose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button disabled={note.etitle.length < 5 || note.edescription.length < 5} onClick={handleClick} type="button" className="btn btn-primary">Update Note</button>
+                            <button disabled={note.etitle.length < 5 || note.edescription.length < 5} onClick={handleClick} type="button" className="btn-gradient px-4 py-2">Update Note</button>
                         </div>
                     </div>
                 </div>
@@ -84,9 +90,9 @@ const Notes = () => {
             <div className="row my-3">
                 <h2>Your Notes</h2>
                 <div className="container mx-2">
-                    {notes.length === 0 && 'No notes to display'}
+                {(!Array.isArray(notes) || filteredNotes.length === 0) && 'No notes to display'}
                 </div>
-                {notes.map((note) => {
+                {filteredNotes.map((note) => {
                     return <Noteitem key={note._id} updateNote={updateNote} note={note} />
                 })}
             </div>
